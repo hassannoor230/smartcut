@@ -22,6 +22,9 @@ export function useAuth() {
   const loginMutation = useMutation({
     mutationFn: async (credentials: { email: string; password: string }) => {
       const { data } = await api.post('/admin/login', credentials);
+      if (data.data.token) {
+        sessionStorage.setItem('admin_token', data.data.token);
+      }
       return data.data.admin as Admin;
     },
     onSuccess: (admin) => {
@@ -33,6 +36,7 @@ export function useAuth() {
   const logoutMutation = useMutation({
     mutationFn: async () => {
       await api.post('/admin/logout');
+      sessionStorage.removeItem('admin_token');
     },
     onSuccess: () => {
       queryClient.setQueryData(['auth'], null);
