@@ -1,11 +1,12 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../lib/api';
 import type { Admin } from '../types';
 
 export function useAuth() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { data: admin, isLoading, isError } = useQuery({
     queryKey: ['auth'],
@@ -13,6 +14,7 @@ export function useAuth() {
       const { data } = await api.get('/admin/me');
       return data.data.admin as Admin;
     },
+    enabled: location.pathname !== '/admin/login',
     retry: false,
     staleTime: 5 * 60 * 1000,
   });
