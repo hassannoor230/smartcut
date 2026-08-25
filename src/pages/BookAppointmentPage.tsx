@@ -227,7 +227,7 @@ export default function BookAppointmentPage() {
         <Helmet>
           <title>Appointment Confirmed | Smartcut Rahwali Gujranwala</title>
         </Helmet>
-        <section className="section-padding">
+        <section className="section-padding overflow-x-hidden">
           <div className="container-narrow max-w-xl">
             <div className="bg-surface border border-accent/30 p-8 rounded-sm text-center">
               <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
@@ -270,7 +270,7 @@ export default function BookAppointmentPage() {
       <Helmet>
         <title>Book Appointment | Smartcut Rahwali Gujranwala</title>
       </Helmet>
-      <section className="section-padding">
+      <section className="section-padding overflow-x-hidden">
         <div className="container-narrow max-w-2xl">
           <p className="text-accent text-sm tracking-widest uppercase mb-2">Appointments</p>
           <h1 className="font-heading text-section text-light-text mb-2">BOOK APPOINTMENT</h1>
@@ -278,10 +278,10 @@ export default function BookAppointmentPage() {
             Follow the steps below to book your appointment.
           </p>
 
-          <div className="flex items-center justify-between mb-10">
+          <div className="flex items-start justify-between gap-1 sm:gap-2 mb-10 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-hide">
             {steps.map((s, idx) => (
-              <div key={s.id} className="flex items-center">
-                <div className="flex flex-col items-center">
+              <div key={s.id} className="flex items-center shrink-0">
+                <div className="flex flex-col items-center min-w-[44px]">
                   <div
                     className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-colors ${
                       step >= s.id
@@ -301,7 +301,7 @@ export default function BookAppointmentPage() {
                 </div>
                 {idx < steps.length - 1 && (
                   <div
-                    className={`w-8 md:w-16 h-0.5 mx-1 ${
+                    className={`w-3 sm:w-6 md:w-16 h-0.5 mx-0.5 sm:mx-1 ${
                       step > s.id ? 'bg-accent' : 'bg-surface'
                     }`}
                   />
@@ -357,7 +357,7 @@ export default function BookAppointmentPage() {
                     }`}
                   >
                     <div className="text-xs text-light-muted">{d.label.split(' ')[0]}</div>
-                    <div className="text-lg font-heading text-light-text">{d.label.split(' ')[1]?.replace(',', '')}</div>
+                    <div className="text-lg sm:text-xl font-heading text-light-text">{d.label.split(' ')[1]?.replace(',', '')}</div>
                     <div className="text-xs text-light-muted">{d.label.split(' ')[2]}</div>
                   </button>
                 ))}
@@ -488,49 +488,49 @@ export default function BookAppointmentPage() {
           {step === 6 && (
             <div>
               <h2 className="font-heading text-xl text-light-text mb-4">Confirm Your Booking</h2>
-              <div className="bg-surface border border-surface rounded-sm p-6 space-y-4">
-                <div className="flex justify-between py-2 border-b border-surface">
+              <div className="bg-surface border border-surface rounded-sm p-4 sm:p-6 space-y-4">
+                <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                   <span className="text-light-muted">Service</span>
-                  <span className="text-light-text font-medium">{selectedService?.name}</span>
+                  <span className="text-light-text font-medium text-right break-words max-w-[60%]">{selectedService?.name}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-surface">
+                <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                   <span className="text-light-muted">Price</span>
-                  <span className="text-light-text font-medium">{formatPrice(selectedServicePrice ?? null)}</span>
+                  <span className="text-light-text font-medium text-right break-words max-w-[60%]">{formatPrice(selectedServicePrice ?? null)}</span>
                 </div>
                 {selectedServiceDuration != null && (
-                  <div className="flex justify-between py-2 border-b border-surface">
+                  <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                     <span className="text-light-muted">Duration</span>
-                    <span className="text-light-text font-medium">{selectedServiceDuration} min</span>
+                    <span className="text-light-text font-medium text-right break-words max-w-[60%]">{selectedServiceDuration} min</span>
                   </div>
                 )}
-                <div className="flex justify-between py-2 border-b border-surface">
+                <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                   <span className="text-light-muted">Date</span>
-                  <span className="text-light-text font-medium">{selectedDayLabel}</span>
+                  <span className="text-light-text font-medium text-right break-words max-w-[60%]">{selectedDayLabel}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-surface">
+                <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                   <span className="text-light-muted">Time</span>
-                  <span className="text-light-text font-medium">{selectedTime}</span>
+                  <span className="text-light-text font-medium text-right break-words max-w-[60%]">{selectedTime}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-surface">
+                <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                   <span className="text-light-muted">Name</span>
-                  <span className="text-light-text font-medium">{form.customerName || '-'}</span>
+                  <span className="text-light-text font-medium text-right break-words max-w-[60%]">{form.customerName || '-'}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-surface">
+                <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                   <span className="text-light-muted">Phone</span>
-                  <span className="text-light-text font-medium">{form.phone || '-'}</span>
+                  <span className="text-light-text font-medium text-right break-words max-w-[60%]">{form.phone || '-'}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-surface">
+                <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                   <span className="text-light-muted">Email</span>
-                  <span className="text-light-text font-medium">{form.customerEmail || '-'}</span>
+                  <span className="text-light-text font-medium text-right break-words max-w-[60%]">{form.customerEmail || '-'}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-surface">
+                <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                   <span className="text-light-muted">Payment</span>
-                  <span className="text-light-text font-medium capitalize">{paymentMethod}</span>
+                  <span className="text-light-text font-medium text-right capitalize break-words max-w-[60%]">{paymentMethod}</span>
                 </div>
                 {form.message && (
-                  <div className="flex justify-between py-2 border-b border-surface">
+                  <div className="flex items-start justify-between gap-4 py-2 border-b border-surface">
                     <span className="text-light-muted">Message</span>
-                    <span className="text-light-text font-medium text-right max-w-xs">{form.message}</span>
+                    <span className="text-light-text font-medium text-right break-words max-w-[60%]">{form.message}</span>
                   </div>
                 )}
               </div>
@@ -544,7 +544,7 @@ export default function BookAppointmentPage() {
             <p className="text-red-400 text-sm mt-4">Something went wrong. Please try again.</p>
           )}
 
-          <div className="flex justify-between mt-8">
+          <div className="flex items-center justify-between gap-3 mt-8">
             <button
               type="button"
               onClick={goBack}
@@ -559,7 +559,7 @@ export default function BookAppointmentPage() {
               <button
                 type="button"
                 onClick={goNext}
-                className="btn-primary flex items-center gap-1"
+                className="btn-primary flex items-center justify-center gap-1 shrink-0 min-w-[88px]"
               >
                 Next
                 <ChevronRight size={18} />
@@ -569,7 +569,7 @@ export default function BookAppointmentPage() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={status === 'loading'}
-                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed w-auto min-w-[150px] text-center"
               >
                 {status === 'loading' ? 'Confirming...' : 'CONFIRM BOOKING'}
               </button>
@@ -579,8 +579,8 @@ export default function BookAppointmentPage() {
       </section>
 
       {showPaymentModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
-          <div className="bg-primary border border-surface rounded-sm p-6 max-w-md w-full">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 overflow-y-auto">
+          <div className="bg-primary border border-surface rounded-sm p-4 sm:p-6 max-w-md w-full max-h-[calc(100vh-1.5rem)] sm:max-h-[calc(100vh-2rem)] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-heading text-xl text-light-text">Upload Payment Receipt</h3>
               <button
@@ -601,7 +601,7 @@ export default function BookAppointmentPage() {
                 <img
                   src={receiptPreview}
                   alt="Receipt preview"
-                  className="w-full h-48 object-cover rounded-sm border border-surface"
+                  className="w-full h-40 sm:h-48 object-cover rounded-sm border border-surface"
                 />
                 <button
                   type="button"
@@ -638,7 +638,7 @@ export default function BookAppointmentPage() {
 
             {errors.upload && <p className="text-red-400 text-xs mb-3">{errors.upload}</p>}
 
-            <div className="flex gap-3">
+            <div className="flex flex-col-reverse sm:flex-row gap-3">
               <button
                 type="button"
                 onClick={() => {
